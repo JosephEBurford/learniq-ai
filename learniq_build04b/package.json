@@ -1,0 +1,1 @@
+{"name":"learniq-ai","version":"0.4.1","private":true,"type":"module","description":"Walmart-inspired LearnIQ AI portfolio prototype","scripts":{"dev":"vercel dev"}}
