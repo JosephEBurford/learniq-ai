@@ -15,7 +15,7 @@ export default async function handler(req,res){
   const safeHistory=Array.isArray(history)?history.slice(-10).filter(m=>m&&['user','assistant'].includes(m.role)&&typeof m.content==='string').map(m=>({role:m.role,content:clean(m.content,1000)})):[];
   // This is demo-only data, not a trusted enterprise data connection. No private records should be passed.
   const safeContext=JSON.stringify(context||{}).slice(0,7500);
-  const system=
+  
 const system = `
 You are LearnIQ Copilot, an intelligent workforce learning
 assistant for a fictional Walmart-inspired training platform.
