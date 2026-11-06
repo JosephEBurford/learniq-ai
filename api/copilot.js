@@ -146,7 +146,7 @@ Return JSON only. Do not wrap it in Markdown.
     const upstream=await fetch('https://api.openai.com/v1/chat/completions',{
       method:'POST',signal:controller.signal,
       headers:{'Content-Type':'application/json','Authorization':`Bearer ${process.env.OPENAI_API_KEY}`},
-      body:JSON.stringify({model:process.env.OPENAI_MODEL||'gpt-4o-mini',temperature:0.3,response_format:{type:'json_object'},max_tokens:650,messages:[{role:'system',content:system},{role:'system',content:`Current fictional demo context: ${safeContext}`},...safeHistory,{role:'user',content:question}]})
+      body:JSON.stringify({model:process.env.OPENAI_MODEL||'gpt-4o-mini',temperature:0.3,response_format:{type:'json_object'},max_tokens:1600,messages:[{role:'system',content:system},{role:'system',content:`Current fictional demo context: ${safeContext}`},...safeHistory,{role:'user',content:question}]})
     });
     if(!upstream.ok){const code=upstream.status;return res.status(code===429?429:502).json({error:code===429?'AI is temporarily rate-limited. Try again shortly.':'AI service could not complete the request. Check API configuration and billing.'});}
     const result=await upstream.json();let parsed;
